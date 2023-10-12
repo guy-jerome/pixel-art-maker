@@ -1,0 +1,35 @@
+html body {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+
+}
+
+header {
+  height: 10%;
+  background-color:darkslategrey;
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  background-color: antiquewhite;
+  align-items: center;
+
+}
+#art-container{
+  height: 90%;
+  width: 50%;
+  background-color: lightslategrey;
+}
+#tool-bar{
+  height: 10%;
+  width: 50%;
+  background-color: black;
+}
+footer{
+  height: 10%;
+  background-color: darkslategray;
+}
