@@ -3,14 +3,17 @@ html body {
   height: 100vh;
   flex-direction: column;
   margin: 0;
+  position: relative;
+  z-index: -1;
+  overflow: hidden;
 
 }
 
 header {
   height: 8%;
-  background-color:rgb(82, 114, 242);
+  background-color:rgb(15, 32, 99);
   text-align: center;
-  border: .5vh solid rgb(7, 37, 65);
+  border: .5vh solid black
 }
 
 main {
@@ -18,6 +21,8 @@ main {
   height: 87%;
   background-color: #FBECB2;
   align-items: center;
+  position: relative;
+  z-index: -1;
 
 }
 #art-container{
@@ -26,13 +31,17 @@ main {
   align-items: center;
   height: 100%;
   width: 80%;
-  background-color: rgb(7, 37, 65)
+  background-image: url(retroBackground.jpg);
+  box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: -1;
 }
+/* https://wallpapercave.com/w/wp5524296-- Uploaded by  gwenizard*/
 #tool-bar{
   height: 100%;
   width: 10%;
-  background-color: rgb(82, 114, 242);
-  border: .5vh solid rgb(7, 37, 65);
+  background-color: rgb(15, 32, 99);
+  border: .5vh solid black
 }
 #canvas{
     display: flex;
@@ -40,17 +49,28 @@ main {
     background-color: white;
     width: 50%;
     aspect-ratio: 1 / 1; 
-    box-sizing:border-box
+    box-sizing:border-box;
+    box-shadow: 0px 0px 10px 10px #000000;
+    position: relative;
+    z-index: -1;
+    
 }
 #palette{
-    background-color: rgb(82, 114, 242);
+    background-color: rgb(15, 32, 99);
     height: 100%;
     width: 10%;
-    border: .5vh solid rgb(7, 37, 65);
+    border: .5vh solid black;
+    display: grid;
+    grid-template-rows: repeat(10,1fr);
+    grid-template-columns: repeat(2,1fr);
+/* Adjust the number of columns as needed */
+
 }
+
+
 
 footer{
   height: 5%;
-  background-color: rgb(82, 114, 242);
-  border: .5vh solid rgb(7, 37, 65);
+  background-color: rgb(15, 32, 99);
+  border: .5vh solid black
 }
