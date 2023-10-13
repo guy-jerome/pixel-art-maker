@@ -2,34 +2,55 @@ html body {
   display: flex;
   height: 100vh;
   flex-direction: column;
+  margin: 0;
 
 }
 
 header {
-  height: 10%;
-  background-color:darkslategrey;
+  height: 8%;
+  background-color:rgb(82, 114, 242);
   text-align: center;
+  border: .5vh solid rgb(7, 37, 65);
 }
 
 main {
   display: flex;
-  flex-direction: column;
-  height: 80%;
-  background-color: antiquewhite;
+  height: 87%;
+  background-color: #FBECB2;
   align-items: center;
 
 }
 #art-container{
-  height: 90%;
-  width: 50%;
-  background-color: lightslategrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 80%;
+  background-color: rgb(7, 37, 65)
 }
 #tool-bar{
-  height: 10%;
-  width: 50%;
-  background-color: black;
+  height: 100%;
+  width: 10%;
+  background-color: rgb(82, 114, 242);
+  border: .5vh solid rgb(7, 37, 65);
 }
+#canvas{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    width: 50%;
+    aspect-ratio: 1 / 1; 
+    box-sizing:border-box
+}
+#palette{
+    background-color: rgb(82, 114, 242);
+    height: 100%;
+    width: 10%;
+    border: .5vh solid rgb(7, 37, 65);
+}
+
 footer{
-  height: 10%;
-  background-color: darkslategray;
+  height: 5%;
+  background-color: rgb(82, 114, 242);
+  border: .5vh solid rgb(7, 37, 65);
 }
