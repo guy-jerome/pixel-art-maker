@@ -12,13 +12,28 @@
   </header>
   <main>
     <div id = "tool-bar">
-
+      <h3>Tool Bar</h3>
+      <button id="save">Save Image</button>
+      <button id="load">Load Image</button>
+      <button id="clear">Clear Image</button>
+      <hr>
+      <h3>Drawing Tools</h3>
+      <button id="paint-brush">Paint Brush</button>
+      <button id="erase">Eraser</button>
     </div>
     
     <div id="art-container">
       <div id ="canvas"></div>
     </div>
-    <div id="palette"><input type="color"/></div>
+    <div id="color-bar">
+      <h2>Colors</h2>
+      <div id = "palette">
+
+      </div>
+      <h2>Color Picker</h2>
+      <input type="color" id="color-picker">
+      <div id="selectedColor"></div>
+    </div>
   </main>
   <footer></footer>
   <script src="script.js"></script>
