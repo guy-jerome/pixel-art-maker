@@ -78,9 +78,8 @@ main {
 #palette{
     overflow-y: scroll;
     display: grid;
-    grid-template-rows: repeat(5,1fr);
     grid-template-columns: repeat(4,1fr);
-    height: 30%;
+    max-height: 30%;
     margin-left: 10%;
     margin-right: 10%;
 /* Adjust the number of columns as needed */

@@ -173,9 +173,8 @@ for (color of defaultPalette){
   const swatch = document.createElement("div")
   swatch.style.backgroundColor = color
   swatch.style.width = "100%"
-  swatch.style.height = "100%"
-  swatch.style.paddingBottom = "100%"
-  swatch.style.border = "1px solid black"
+  swatch.style.aspectRatio  = "1/1"
+  swatch.style.border = ".1em solid black"
   swatch.style.boxSizing = "border-box"
   swatch.classList.add("swatch")
   palette.appendChild(swatch)
