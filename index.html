@@ -20,19 +20,21 @@
       <h3>Drawing Tools</h3>
       <button id="paint-brush">Paint Brush</button>
       <button id="erase">Eraser</button>
+      <button id="fill">Fill Tool</button>
     </div>
     
     <div id="art-container">
-      <div id ="canvas"></div>
+      <div id ="canvas-back" >
+        <div id ="canvas"></div>
+      </div>
     </div>
     <div id="color-bar">
       <h2>Colors</h2>
       <div id = "palette">
 
       </div>
-      <h2>Color Picker</h2>
-      <input type="color" id="color-picker">
-      <div id="selectedColor"></div>
+      <h2>Selected Color</h2>
+      <div id="selected-color"><input type="color" id="color-picker"></div>
     </div>
   </main>
   <footer></footer>
