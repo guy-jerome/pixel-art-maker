@@ -9,6 +9,9 @@ const paintBrush = document.querySelector("#paint-brush")
 const fill = document.querySelector("#fill")
 const colorPicker = document.querySelector("#color-picker")
 const selectedColor = document.querySelector("#selected-color")
+const savedImages = document.querySelector("#saved-images")
+const images = document.querySelector("#images")
+
 const gridSize = 32; 
 
 let defaultPalette = [
@@ -64,6 +67,8 @@ let defaultPalette = [
   "#6B8E23", // Olive Drab
   "#2E8B57", // Sea Green
 ];
+
+
 let currentColor;
 let mouseDown = false;
 let currentTool = "paintBrush"
@@ -123,6 +128,8 @@ function paintColor(e){
 
 
 canvas.addEventListener("click", setColor)
+
+
 for (let i = 0; i < gridSize ; i++) {
   for(let k = 0; k < gridSize;k++){
     const tile = document.createElement("div");
@@ -187,13 +194,18 @@ colorPicker.addEventListener("input", (e)=>{
 })
 
 
-let image = []
+
 save.addEventListener("click",()=>{
-  image = []
+  let image = []
   for (tile of canvas.children){
     image.push(tile.style.backgroundColor)
   }
-  localStorage.setItem("image",JSON.stringify(image))
+  let imageName = prompt("Choose a name for your image:")
+  if (imageName){
+    addSavedImage(imageName)
+    localStorage.setItem(imageName,JSON.stringify(image))
+  }
+
 })
 
 
@@ -224,6 +236,47 @@ fill.addEventListener("click",()=>{
   currentTool = "fill"
 })
 
+images.style.display = "none"
+const emptySave = document.createElement("div")
+emptySave.classList.add("dropdown-items")
+emptySave.textContent = "Empty"
+images.appendChild(emptySave)
+
+function getFile(name){
+  image = JSON.parse(localStorage.getItem(name))
+  if (image.length>0){
+    for (let i = 0;i < canvas.children.length;i++){
+      canvas.children[i].style.backgroundColor = image[i]
+    }
+  }
+}
+
+function addSavedImage(imageName){
+  let save = document.createElement("button")
+  save.classList.add("dropdown-items")
+  save.textContent = imageName
+  save.addEventListener("click",()=>{
+    getFile(imageName)
+  })
+  images.appendChild(save)
+  emptySave.style.display = "none"
+}
+
+savedImages.addEventListener("click",()=>{
+  images.style.display === "block"? images.style.display = "none": images.style.display = "block"
+    
+})
+window.addEventListener("click",(e)=>{
+  if ( e.target !== savedImages && images.style.display === "block"){
+     images.style.display = "none"}
+})
+
+function loadSavedImages(){
+  for (image in localStorage){
+    addSavedImage(image)
+  }
+}
+loadSavedImages()
 
 function fillArea(e) {
   const canvasGrid = [];
