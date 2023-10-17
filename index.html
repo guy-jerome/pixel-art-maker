@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pixel Maker</title>
+  <title>Paint By Pixel</title>
   <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
@@ -18,14 +18,17 @@
       <button id= saved-images class = "dropbtn">Saved Images</button>
       <div id = images class="dropdown-content"></div>
     </div>
-    <h1>Pixel Maker</h1>
+    <h1>Paint By Pixel</h1>
+    <div class="dropdown">
+      <button id= palette-list class = "dropbtn">Change Palette</button>
+      <div id = palettes class="dropdown-content"></div>
+    </div>
   </header>
   <main>
     <div id = "tool-bar">
       <h3>Tool Bar</h3>
       <button id="save" class="tools"><img class="icon" src="./Assets/diskette.png" alt="Save"/></button>
       <button id="clear" class="tools"><img class="icon" src="./Assets/bin.png" alt="Clear"/></button>
-      <hr>
       <h3>Drawing Tools</h3>
       <button id="paint-brush" class="tools"><img class="icon" src="./Assets/brush.png" alt="Paint"/></button>
       <button id="erase" class="tools"><img class="icon" src="./Assets/eraser.png" alt="Eraser"/></button>
@@ -39,21 +42,23 @@
     </div>
     <div id="color-bar">
       <h2>Colors</h2>
-      <div id = "palette">
+    <div id = "palette">
 
-      </div>
+    </div>
       <h2>Selected Color</h2>
       <div id="selected-color"><input type="color" id="color-picker"></div>
     </div>
   </main>
   <footer>
-    <a href="https://www.flaticon.com/free-icons/bucket" title="bucket icons">Bucket icons created by Those Icons - Flaticon</a>\
-    <a href="https://www.flaticon.com/free-icons/brush" title="brush icons">Brush icons created by Freepik - Flaticon</a>
-    <a href="https://www.flaticon.com/free-icons/eraser" title="eraser icons">Eraser icons created by Those Icons - Flaticon</a>
-    <a href="https://www.flaticon.com/free-icons/save" title="save icons">Save icons created by Yogi Aprelliyanto - Flaticon</a>
-    <a href="https://www.flaticon.com/free-icons/clear" title="clear icons">Clear icons created by GOFOX - Flaticon</a>
-    <a href="https://www.flaticon.com/free-icons/load" title="load icons">Load icons created by Pohon Maple - Flaticon</a>
+    <h5>Created By: Aaron Roberts <a href="https://github.com/guy-jerome">https://github.com/guy-jerome</a></h5>
   </footer>
   <script src="script.js"></script>
 </body>
 </html>
+
+<!-- <a href="https://www.flaticon.com/free-icons/bucket" title="bucket icons">Bucket icons created by Those Icons - Flaticon</a>\
+<a href="https://www.flaticon.com/free-icons/brush" title="brush icons">Brush icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/eraser" title="eraser icons">Eraser icons created by Those Icons - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/save" title="save icons">Save icons created by Yogi Aprelliyanto - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/clear" title="clear icons">Clear icons created by GOFOX - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/load" title="load icons">Load icons created by Pohon Maple - Flaticon</a> -->

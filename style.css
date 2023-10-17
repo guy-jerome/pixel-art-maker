@@ -11,10 +11,17 @@ html body {
 
 }
 
+body button:hover{
+  cursor: pointer;
+}
+body button{
+  border: .2em solid black;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
+}
 header {
   display: flex;
   height: 5%;
-  background-color:rgb(15, 32, 99);
+  background-color:rgb(58, 121, 173);
   border: .5vh solid black;
   justify-content:center;
   font-size: 1rem;
@@ -24,13 +31,15 @@ header {
 header h1{
   margin: 0;
   margin-left: 10em;
+  margin-right: 10em;
+  font-size: 2vw;
 }
 
 .dropdown{
   /* position: relative; */
   height: 100%;
   margin: 0;
-  margin-right: 1em;
+  margin-right: 1em
 
 }
 
@@ -42,14 +51,18 @@ header h1{
   z-index: 1;
   margin: 0;
   
+  
 
 }
 .dropbtn{
   height: 100%;
   box-sizing:border-box;
   background-color: aliceblue;
-  font-size: large;
+  font-size: 1vw;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
   width: 100%;
+
 }
 
 .dropbtn:hover{
@@ -89,6 +102,7 @@ main {
   align-items: center;
   position: relative;
   z-index: -1;
+  font-size: 1vw;
 
 }
 #art-container{
@@ -119,6 +133,9 @@ main {
   background-color:aliceblue
   
 }
+.tools:hover{
+  background-color: rgb(137, 154, 168);;
+}
 .icon{
   width: 100%;
   height: 100%;
@@ -147,6 +164,12 @@ main {
     position: absolute;
     z-index: -1;    
 }
+
+.tile:hover{
+  filter: invert(.2);
+  cursor:crosshair
+}
+
 #color-bar{
   background-color: rgb(15, 32, 99);
   height: 100%;
@@ -155,6 +178,9 @@ main {
   display: flex;
   flex-direction: column;
 }
+#color-bar h2{
+  margin-left: 1em;
+}
 #palette{
     overflow-y: scroll;
     display: grid;
@@ -162,7 +188,28 @@ main {
     max-height: 30%;
     margin-left: 10%;
     margin-right: 10%;
-/* Adjust the number of columns as needed */
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+#palette:hover{
+  cursor: pointer;
+}
+
+#palette::-webkit-scrollbar {
+  width: .5em; /
+}
+
+#palette::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: .25em; 
+}
+
+#palette::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+#palette::-webkit-scrollbar-thumb:hover {
+  background: #333; 
 }
 #color-picker{
   width: 100%;
@@ -174,15 +221,29 @@ main {
   width: 40%;
   aspect-ratio: 1 / 1; 
   background-color: blue;
-  margin-left: 10%;
+  margin-left: 30%;
   box-sizing:border-box;
-  border: .2em solid black;
-
+  border: .4em solid black;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
+}
+#color-picker:hover{
+  cursor: pointer;
+}
+.empty:hover{
+  cursor: not-allowed;
 }
 
 footer{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   height: 5%;
-  background-color: rgb(15, 32, 99);
+  background-color: rgb(58, 121, 173);
   border: .5vh solid black;
   color: rgba(255, 255, 255, 0.952)
+}
+
+footer h5{
+  font-size: .8vw;
+  margin: 0;
 }
