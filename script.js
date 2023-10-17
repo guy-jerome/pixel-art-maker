@@ -11,7 +11,8 @@ const colorPicker = document.querySelector("#color-picker")
 const selectedColor = document.querySelector("#selected-color")
 const savedImages = document.querySelector("#saved-images")
 const images = document.querySelector("#images")
-
+const imageSizes = document.querySelector("#image-sizes")
+const sizes = document.querySelector("#sizes")
 const gridSize = 32; 
 
 let defaultPalette = [
@@ -129,31 +130,32 @@ function paintColor(e){
 
 canvas.addEventListener("click", setColor)
 
-
-for (let i = 0; i < gridSize ; i++) {
-  for(let k = 0; k < gridSize;k++){
-    const tile = document.createElement("div");
-    tile.style.width = `${100/gridSize}%`
-    tile.style.height = `${100/gridSize}%`
-    i%2==0?(k%2==0?tile.style.backgroundColor = "rgb(226, 226, 226)" : tile.style.backgroundColor = "white")
-    :(k%2==0?tile.style.backgroundColor = "white" : tile.style.backgroundColor = "rgb(226, 226, 226)")
-    tile.style.zIndex = "-2"
-    canvasBack.appendChild(tile);
+function generateGrid(gridSize){
+  for (let i = 0; i < gridSize ; i++) {
+    for(let k = 0; k < gridSize;k++){
+      const tile = document.createElement("div");
+      tile.style.width = `${100/gridSize}%`
+      tile.style.height = `${100/gridSize}%`
+      i%2==0?(k%2==0?tile.style.backgroundColor = "rgb(226, 226, 226)" : tile.style.backgroundColor = "white")
+      :(k%2==0?tile.style.backgroundColor = "white" : tile.style.backgroundColor = "rgb(226, 226, 226)")
+      tile.style.zIndex = "-2"
+      canvasBack.appendChild(tile);
+    }
   }
-}
 
-for (let i = 0; i < gridSize ; i++) {
-  for(let k = 0; k < gridSize;k++){
-    const tile = document.createElement("div");
-    tile.style.width = `${100/gridSize}%`
-    tile.style.height = `${100/gridSize}%`
-    tile.style.backgroundColor = "transparent";
-    tile.dataset.defaultColor = tile.style.backgroundColor
-    tile.dataset.x = k
-    tile.dataset.y = i
-    tile.addEventListener("mouseenter", paintColor)
-    tile.classList.add("tile")
-    canvas.appendChild(tile);
+  for (let i = 0; i < gridSize ; i++) {
+    for(let k = 0; k < gridSize;k++){
+      const tile = document.createElement("div");
+      tile.style.width = `${100/gridSize}%`
+      tile.style.height = `${100/gridSize}%`
+      tile.style.backgroundColor = "transparent";
+      tile.dataset.defaultColor = tile.style.backgroundColor
+      tile.dataset.x = k
+      tile.dataset.y = i
+      tile.addEventListener("mouseenter", paintColor)
+      tile.classList.add("tile")
+      canvas.appendChild(tile);
+    }
   }
 }
 
@@ -202,26 +204,22 @@ save.addEventListener("click",()=>{
   }
   let imageName = prompt("Choose a name for your image:")
   if (imageName){
-    addSavedImage(imageName)
-    localStorage.setItem(imageName,JSON.stringify(image))
-  }
-
-})
-
-
-load.addEventListener("click",()=>{
-  image = JSON.parse(localStorage.getItem("image"))
-  if (image.length>0){
-    for (let i = 0;i < canvas.children.length;i++){
-      canvas.children[i].style.backgroundColor = image[i]
+    if (!localStorage.getItem(`img-${imageName}`)){
+      addSavedImage(`img-${imageName}`)
     }
+    localStorage.setItem(`img-${imageName}`,JSON.stringify(image))
   }
+
 })
 
-clear.addEventListener("click", ()=>{
+function clearPalette(){
   for (tile of canvas.children){
     tile.style.backgroundColor = tile.dataset.defaultColor
   }
+}
+
+clear.addEventListener("click", ()=>{
+  clearPalette()
 })
 
 erase.addEventListener("click",()=>{
@@ -251,14 +249,30 @@ function getFile(name){
   }
 }
 
+function removeFile(name,dropdown){
+  images.removeChild(dropdown)
+  localStorage.removeItem(name)
+  clearPalette()
+}
+
 function addSavedImage(imageName){
-  let save = document.createElement("button")
-  save.classList.add("dropdown-items")
-  save.textContent = imageName
+  let dropdown = document.createElement("div")
+  dropdown.classList.add("dropdown-items")
+  let save = document.createElement("button") 
+  save.classList.add("dropdown-item")
+  save.textContent = imageName.replace("img-", "")
   save.addEventListener("click",()=>{
     getFile(imageName)
   })
-  images.appendChild(save)
+  let remove = document.createElement("button")
+  remove.classList.add("dropdown-remove")
+  remove.textContent = "X"
+  remove.addEventListener("click",()=>{
+    removeFile(imageName,dropdown)
+  })
+  dropdown.appendChild(save)
+  dropdown.appendChild(remove)
+  images.appendChild(dropdown)
   emptySave.style.display = "none"
 }
 
@@ -269,14 +283,48 @@ savedImages.addEventListener("click",()=>{
 window.addEventListener("click",(e)=>{
   if ( e.target !== savedImages && images.style.display === "block"){
      images.style.display = "none"}
+  if (e.target !== imageSizes && sizes.style.display === "block"){
+     sizes.style.display = "none"}
 })
-
+function wipeCanvas(dem){
+  canvas.innerHTML = ""
+  while (canvasBack.lastChild && canvasBack.lastChild !== canvas) {
+    canvasBack.removeChild(canvasBack.lastChild);
+  }
+  generateGrid(dem)
+}
 function loadSavedImages(){
   for (image in localStorage){
-    addSavedImage(image)
+    if(image.startsWith("img-")){
+      addSavedImage(image)
+    }
   }
 }
-loadSavedImages()
+sizes.style.display = "none"
+function createSizes(dems){
+  for (dem of dems){
+    let dropdown = document.createElement("div")
+    dropdown.classList.add("dropdown-items")
+    let size = document.createElement("button")
+    size.textContent = `${dem}x${dem}`
+    size.classList.add("dropdown-item")
+    size.dataset.size = dem
+    size.addEventListener("click",()=>{
+
+      wipeCanvas(size.dataset.size)
+    })
+    dropdown.appendChild(size)
+    sizes.appendChild(dropdown)
+  }
+}
+
+createSizes([8,16,32,64,128])
+
+
+imageSizes.addEventListener("click",()=>{
+  sizes.style.display ==="block"? sizes.style.display = "none": sizes.style.display = "block"
+})
+
 
 function fillArea(e) {
   const canvasGrid = [];
@@ -325,5 +373,8 @@ function fillArea(e) {
     }
   }
 }
+
+generateGrid(8)
+loadSavedImages()
 
 
