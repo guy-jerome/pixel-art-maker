@@ -538,7 +538,6 @@ function fillArea(e) {
 generateGrid(gridSize)
 generatePalette(defaultPalette)
 createPalettes(allPalettes)
-//Creates the different sizes for the pallet
 createSizes(gridSizes)
 loadSavedImages()
 
