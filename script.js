@@ -30,6 +30,14 @@ sizes.style.display = "none"
 palettes.style.display = "none"
 const gridSizes = [8,16,32,64,128];
 
+
+const emptySave = document.createElement("div")
+emptySave.classList.add("dropdown-items")
+emptySave.textContent = "Empty"
+emptySave.classList.add("empty")
+images.appendChild(emptySave)
+
+
 // Define an array of random colors and a default color palette
 const randomPalette = [
   "#000000", // Black
@@ -346,13 +354,7 @@ fill.addEventListener("click",()=>{
 })
 //--------------------SAVE AND LOAD IMAGES-------------------------------------
 //Creates an empty item in the image drop down menu
-function createEmpty(){
-  const emptySave = document.createElement("div")
-  emptySave.classList.add("dropdown-items")
-  emptySave.textContent = "Empty"
-  emptySave.classList.add("empty")
-  images.appendChild(emptySave)
-}
+
 
 //Loads an image from local storage
 function getFile(name){
@@ -367,7 +369,11 @@ function getFile(name){
 function removeFile(name,dropdown){
   images.removeChild(dropdown)
   localStorage.removeItem(name)
+  if (images.childElementCount === 1){
+    emptySave.style.display = "block"
+  }
   clearPalette()
+
 }
 //Generates a new saved image in the saved images drop down menu
 function addSavedImage(imageName){
@@ -532,7 +538,6 @@ function fillArea(e) {
 generateGrid(gridSize)
 generatePalette(defaultPalette)
 createPalettes(allPalettes)
-createEmpty()
 //Creates the different sizes for the pallet
 createSizes(gridSizes)
 loadSavedImages()
