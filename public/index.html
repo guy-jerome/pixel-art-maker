@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paint By Pixel</title>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+  <header>
+    <div class="dropdown">
+      <button id= image-sizes class = "dropbtn">New Image</button>
+      <div id = sizes class="dropdown-content">
+        
+      </div>
+    </div>
+    <div class="dropdown">
+      <button id= saved-images class = "dropbtn">Saved Images</button>
+      <div id = images class="dropdown-content"></div>
+    </div>
+    <h1>Paint By Pixel</h1>
+    <div class="dropdown">
+      <button id= palette-list class = "dropbtn">Change Palette</button>
+      <div id = palettes class="dropdown-content"></div>
+    </div>
+  </header>
+  <main>
+    <div id = "tool-bar">
+      <h3>Tool Bar</h3>
+      <button id="save" class="tools"><img class="icon" src="./Assets/diskette.png" alt="Save"/></button>
+      <button id="clear" class="tools"><img class="icon" src="./Assets/bin.png" alt="Clear"/></button>
+      <h3>Drawing Tools</h3>
+      <button id="paint-brush" class="tools"><img class="icon" src="./Assets/brush.png" alt="Paint"/></button>
+      <button id="erase" class="tools"><img class="icon" src="./Assets/eraser.png" alt="Eraser"/></button>
+      <button id="fill" class="tools"><img class="icon" src="./Assets/paint-bucket.png" alt="Fill"/></button>
+    </div>
+    
+    <div id="art-container">
+      <div id ="canvas-back" >
+        <div id ="canvas"></div>
+      </div>
+    </div>
+    <div id="color-bar">
+      <h2>Colors</h2>
+    <div id = "palette">
+
+    </div>
+      <h2>Selected Color</h2>
+      <div id="selected-color"><input type="color" id="color-picker"></div>
+    </div>
+  </main>
+  <footer>
+    <h5>Created By: Aaron Roberts <a href="https://github.com/guy-jerome">https://github.com/guy-jerome</a></h5>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
+
+<!-- <a href="https://www.flaticon.com/free-icons/bucket" title="bucket icons">Bucket icons created by Those Icons - Flaticon</a>\
+<a href="https://www.flaticon.com/free-icons/brush" title="brush icons">Brush icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/eraser" title="eraser icons">Eraser icons created by Those Icons - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/save" title="save icons">Save icons created by Yogi Aprelliyanto - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/clear" title="clear icons">Clear icons created by GOFOX - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/load" title="load icons">Load icons created by Pohon Maple - Flaticon</a> 
+ https://wallpapercave.com/w/wp5524296-- Uploaded by  gwenizard-->
